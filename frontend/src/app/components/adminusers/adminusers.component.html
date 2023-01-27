@@ -1,0 +1,47 @@
+<div class="container mt-5" *ngIf ="this.provjera">
+    <!--Prikaz brisanja-->
+    <div class="col-lg-4 mt-2" >
+      <p>Kreirajte Novog Korisnika:</p>
+      <button class="btn btn-info" (click)="kreirajUser()">Kreiraj</button>
+  </div>
+  <br><br><br>
+    <div class="col-lg-4 mt-2" *ngIf="this.successmsg">
+      <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+        <symbol id="info-fill" fill="currentColor" viewBox="0 0 16 16">
+          <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/>
+        </symbol>
+      </svg>
+      <div class="alert alert-primary d-flex align-items-center" role="alert">
+        <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Info:"><use xlink:href="#info-fill"/></svg>
+        <div>
+          {{this.successmsg}}
+        </div>
+      </div>
+    </div>
+        <table class="table table-bordered table-hover">
+            <thead>
+              <tr>
+                <th scope="col">Broj Indeksa</th>
+                <th scope="col">Ime</th>
+                <th scope="col">Prezime</th>
+                <th scope="col">Uloga</th>
+                <th scope="col">Godine</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let k of korisnici">
+                <th scope="row">{{k.id}}</th>
+                <td>{{k.fname}}</td>
+                <td>{{k.lname}}</td>
+                <td>{{k.role === 555 ? 'Korisnik' : 'Admin/Bibliotekar'}}</td>
+                <td>{{k.age}}</td>
+                <td style="width:170px"><button class="btn btn-sm btn-danger" (click)="deleteUser(k.id)">Obriši</button>
+                  &nbsp;
+                <a class="btn btn-sm btn-primary" style="color:white" [routerLink]="['/korisnik',k.id]">Update</a>
+                </td>
+              </tr>
+              
+            </tbody>
+          </table>
+    </div>
+    

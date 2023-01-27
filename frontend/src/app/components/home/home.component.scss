@@ -1,0 +1,43 @@
+.disabled {
+  cursor: not-allowed;
+}
+
+h2 {
+  position: absolute;
+  top: 35%;
+  font-size: 60px;
+  color:black;
+}
+
+.box {
+  width: 500px;
+  height: 50px;
+  /*background-color: white;*/
+  background-color: black;
+  border-radius: 30px;
+  display: flex;
+  align-items: center;
+  padding: 20px;
+}
+
+.box > i {
+  font-size: 20px;
+  /*color: #777;*/
+  color: black;
+}
+
+.box > input {
+  flex: 1;
+  height: 40px;
+  border: none;
+  outline: none;
+  font-size: 18px;
+  padding-left: 10px;
+}
+
+input {
+  background-color: black;
+  color:white;
+}
+
+

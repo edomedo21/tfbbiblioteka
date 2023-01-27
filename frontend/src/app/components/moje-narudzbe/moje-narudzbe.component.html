@@ -1,0 +1,28 @@
+<div class="container mt-5">
+  <!--Prikaz brisanja-->
+  <div class="col-lg-4 mt-2" >
+    <p><b>Moje Narudzbe</b></p>
+</div>
+</div>
+
+<div class="container mt-5">
+    <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Naziv Knjige</th>
+            <th scope="col">Opis</th>
+            <th scope="col">Količina</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let p of products">
+            <th scope="row">{{p.id}}</th>
+            <td>{{p.title}}</td>
+            <td>{{p.description}}</td>
+            <td>{{p.quantity}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    

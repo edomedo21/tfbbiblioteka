@@ -1,0 +1,67 @@
+<ngx-spinner
+  bdColor= "rgba(151,149,149,0.4)"
+  size="large"
+  color="orange"
+  type="ball-clip-rotate-pulse"
+  fullScreen="true"
+>
+  <p style="font-size: 20px; color: black">Postavljanje Narudžbe...</p>
+</ngx-spinner>
+
+<div class="col-md-7" style="margin-top: 20px; align-items: center;" *ngIf="authState == false">
+  <h2>Prijavite se da biste pristupili iznajmljivanju!</h2>
+</div>
+
+<div class="section" *ngIf="cartData.total > 0 && authState === true">
+ 
+<!-- container -->
+<div class="container">
+  <!-- row -->
+  <div class="row">
+    <!-- Order Details -->
+    <div class="col-md-5 order-details">
+      <div class="section-title text-center">
+        <h3 class="title">Vaša Stavka</h3>
+      </div>
+      <div class="order-summary">
+        <div class="order-col">
+          <div><strong>PROIZVOD</strong></div>
+          <div><strong>Ukupno</strong></div>
+        </div>
+        <div class="order-products">
+          <div class="order-col" *ngFor="let c of cartData.data;">
+            <div>{{c.product.name}}</div>
+            <div>{{(c.numInCart)}} Komad</div>
+          </div>
+        </div>
+        <div class="order-col">
+          <div>Dostava</div>
+          <div><strong>Preuzimanje na fakultetu</strong></div>
+        </div>
+        <div class="order-col dropdown-divider">
+          <div><strong>UKUPNO</strong></div>
+          <div><strong class="order-total">{{cartData.data.length}} KNJIGA</strong></div>
+        </div>
+      </div>
+      
+      <div class="input-checkbox">
+        <input type="checkbox" id="terms">
+        <label for="terms">
+          <span></span>
+          Pročitao sam i prihvaćam <a href="#">uslove kupovine i prodaje</a>
+        </label>
+      </div>
+      <button type="submit" class="btn-outline-danger btn-sm my-2 btn-block" [disabled]="cartTotal <= 0 " (click)="onCheckout()">Postavite Narudžbu</button>
+    </div>
+    <!-- /Order Details -->
+  </div>
+  <!-- /row -->
+</div>
+<!-- /container -->
+</div>
+<!-- /SECTION -->
+
+<div class="text-center my-5" *ngIf="cartData.total <= 0">
+  <h4>Vaša Korpa je prazna!</h4>
+  <button class="btn btn-primary btn-lg mt-3" routerLink="/">Nazad Na Iznajmljivanje</button>
+</div>

@@ -1,0 +1,52 @@
+<div class="container mt-5" *ngIf="this.provjera">
+    <!--Prikaz brisanja-->
+    <div class="col-lg-4 mt-2" >
+      <p>Kreirajte Novu Knjigu:</p>
+      <button class="btn btn-info" (click)="idiKreiraj()">Kreiraj</button>
+  </div>
+  <br>
+  <div class="col-lg-4 mt-2" *ngIf="this.admin">
+    <p>Lista Korisnika:</p>
+    <button class="btn btn-info" (click)="idiKorisnike()">Korisnici</button>
+</div>
+  <br><br><br>
+    <div class="col-lg-4 mt-2" *ngIf="this.successmsg">
+      <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+        <symbol id="info-fill" fill="currentColor" viewBox="0 0 16 16">
+          <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/>
+        </symbol>
+      </svg>
+      <div class="alert alert-primary d-flex align-items-center" role="alert">
+        <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Info:"><use xlink:href="#info-fill"/></svg>
+        <div>
+          {{this.successmsg}}
+        </div>
+      </div>
+    </div>
+        <table class="table table-bordered table-hover">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Naziv Knjige</th>
+                <th scope="col">Opis</th>
+                <th scope="col">Količina</th>
+                <th scope="col">Kategorija</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let p of products">
+                <th scope="row">{{p.id}}</th>
+                <td>{{p.name}}</td>
+                <td>{{p.description.substr(0, 20)}}</td>
+                <td>{{p.quantity}}</td>
+                <td>{{p.category}}</td>
+                <td style="width:170px"><button class="btn btn-sm btn-danger" (click)="deleteProduct(p.id)">Obriši</button>
+                  &nbsp;
+                <a class="btn btn-sm btn-primary" style="color:white" [routerLink]="['/proizvod',p.id]">Update</a>
+                </td>
+              </tr>
+              
+            </tbody>
+          </table>
+    </div>
+    

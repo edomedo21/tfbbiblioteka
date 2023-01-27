@@ -1,0 +1,43 @@
+<header>
+  <img class="logo" src="assets/slike/Logo2.PNG" routerLink="/pocetna">
+  <nav>
+    <ul class="nav_links">
+      <li><a class="lista" routerLink="/admin" *ngIf="this.provjera">ADMIN</a></li>
+      <li><a class="lista" routerLink="/pocetna">Početna</a></li>
+      <li><a class="lista" routerLink="/rent">Iznajmljivanje</a></li>
+      <li><a class="lista" routerLink="/cart">Korpa</a></li>
+    </ul>
+  </nav>
+  <a class="cta" routerLink="/profile"><button>{{authState === false ? 'LOGIN' : 'Moj Profil'}}</button></a>
+  <div class="dropdown" style="margin-left:20px; color:white">
+    <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true" style="cursor: pointer;">
+      <i class="fa fa-shopping-cart"></i>
+      <span> Pregled Korpe</span>
+      <!--<div class="qty">{{cartData.data[0].numInCart !== 0 ? cartData.data.length : 0}}</div>-->
+    </a>
+    <div class="cart-dropdown" >
+      <div class="cart-list" *ngIf="cartData.data[0].numInCart !== 0">
+        <div class="product-widget" *ngFor="let c of cartData.data; let i=index">
+          <div class="product-img">
+            <img src="{{c.product?.image}}" alt="" width="20px">
+          </div>
+          <div class="product-body">
+            <h3 class="product-name"><a href="#">{{c.product?.name}}</a></h3>
+            <h4 class="product-price"><span class="qty">{{c.numInCart}} x </span></h4>
+          </div>
+          <button class="delete" (click)="cartService.DeleteProductFromCart(i)"><i class="fa fa-close"></i></button>
+        </div>
+
+
+      </div>
+      <div class="cart-summary">
+        <small>{{cartData.data[0].numInCart !== 0 ? cartData.data.length : 0}} Item(s) selected</small>
+        <h5>UKUPNO : {{cartData.data[0].numInCart !== 0 ? cartData.data.length : 0}} KNJIGA</h5>
+      </div>
+      <div class="cart-btns">
+        <a routerLink="/cart">Korpa</a>
+        <a routerLink="/checkout">Checkout <i class="fa fa-arrow-circle-right"></i></a>
+      </div>
+    </div>
+  </div>
+</header>
